@@ -1,0 +1,10 @@
+{
+  "title": "Click the Button",
+  "author": "ttbowen",
+  "objective": "Click the moving button as quickly as possible.",
+  "description": "A one-button reaction challenge. Click or tap the button as it moves around the screen.",
+  "tags": ["reaction", "timing", "arcade"],
+  "engineVersion": "0.1.0",
+  "controls": "tap, click",
+  "playUrl": "./games/click-the-button/index.html"
+}

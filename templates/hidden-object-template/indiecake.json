@@ -1,0 +1,10 @@
+{
+  "title": "Find the Dot Template",
+  "author": "your-name",
+  "objective": "Find the target object before time runs out",
+  "description": "A hidden-object microgame template for quick puzzle jams.",
+  "tags": ["template", "hidden-object", "puzzle"],
+  "durationSeconds": 6,
+  "controls": "mouse or touch",
+  "playUrl": "https://example.com/find-the-dot"
+}

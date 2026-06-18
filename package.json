@@ -1,0 +1,9 @@
+{
+  "name": "indiecake-community",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Community games, jam resources, templates, and a tiny sandbox viewer for Indie Cake.",
+  "scripts": {
+    "sandbox": "node sandbox/server.js"
+  }
+}

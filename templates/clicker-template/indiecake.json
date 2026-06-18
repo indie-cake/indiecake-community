@@ -1,0 +1,10 @@
+{
+  "title": "Tap Rush Template",
+  "author": "your-name",
+  "objective": "Tap quickly to reach the target",
+  "description": "A rapid clicker template for jam-ready microgames.",
+  "tags": ["template", "clicker", "one-button"],
+  "durationSeconds": 6,
+  "controls": "mouse or touch",
+  "playUrl": "https://example.com/tap-rush"
+}

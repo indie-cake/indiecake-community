@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hidden Object Template</title>
+    <style>
+      :root {
+        --frame-width: 320px;
+        --frame-height: 240px;
+        --dot-size: 24px;
+      }
+
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #111827;
+        color: #f9fafb;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .game-frame {
+        width: var(--frame-width);
+        height: var(--frame-height);
+        padding: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 22px;
+        line-height: 1.1;
+        text-align: center;
+      }
+      #board {
+        position: relative;
+        width: 100%;
+        flex: 1;
+        min-height: 0;
+        background: #1f2937;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .decoy,
+      #target {
+        position: absolute;
+        width: var(--dot-size);
+        height: var(--dot-size);
+        border-radius: 50%;
+      }
+      .decoy {
+        background: #374151;
+      }
+      #target {
+        background: #22d3ee;
+        cursor: pointer;
+      }
+      #status {
+        margin: 0;
+        min-height: 18px;
+        font-size: 14px;
+        line-height: 1.2;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game-frame">
+      <h1>Find the Dot</h1>
+      <div id="board"></div>
+      <p id="status">Find the bright dot in 6 seconds.</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/indiecake-engine@latest/dist/indiecake-engine.iife.min.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>

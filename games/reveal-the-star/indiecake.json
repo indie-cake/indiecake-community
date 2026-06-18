@@ -1,0 +1,10 @@
+{
+  "title": "Reveal the Star",
+  "author": "ttbowen",
+  "objective": "Find the hidden star",
+  "description": "Find the hidden star among three tiles.",
+  "tags": ["hidden", "choice"],
+  "engineVersion": "0.1.0",
+  "controls": "mouse or touch",
+  "playUrl": "./games/reveal-the-star/index.html"
+}

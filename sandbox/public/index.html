@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indie Cake Community Sandbox</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07111f;
+        --panel: #0f1b2d;
+        --panel-2: #13233a;
+        --border: #233752;
+        --text: #e6edf7;
+        --muted: #9fb0c6;
+        --accent: #ffd166;
+        --accent-2: #7ae3ff;
+        --danger: #ff7b7b;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        background:
+          radial-gradient(circle at top left, rgba(122, 227, 255, 0.12), transparent 28%),
+          radial-gradient(circle at top right, rgba(255, 209, 102, 0.1), transparent 24%),
+          var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      .shell {
+        display: grid;
+        grid-template-columns: 320px minmax(0, 1fr);
+        min-height: 100vh;
+      }
+
+      .sidebar {
+        border-right: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(19, 35, 58, 0.95), rgba(10, 18, 31, 0.92));
+        padding: 20px;
+        overflow: auto;
+      }
+
+      .title {
+        margin: 0 0 6px;
+        font-size: 24px;
+        letter-spacing: 0.02em;
+      }
+
+      .subtitle {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
+      .toolbar {
+        display: grid;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+
+      .toolbar-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+        border: 1px solid var(--border);
+        background: var(--panel);
+        border-radius: 10px;
+        padding: 10px 12px;
+      }
+
+      .toggle input {
+        width: auto;
+        margin: 0;
+      }
+
+      .toolbar input,
+      .toolbar button,
+      .toolbar select {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        padding: 10px 12px;
+        font: inherit;
+      }
+
+      .toolbar button {
+        cursor: pointer;
+        background: linear-gradient(180deg, #1a3355, #13233a);
+      }
+
+      .toolbar button:hover {
+        border-color: #3b5d87;
+      }
+
+      .difficulty-selector {
+        display: grid;
+        gap: 8px;
+
+      }
+
+      .difficulty-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+
+      .difficulty-btn {
+        padding: 10px 8px;
+        border-radius: 8px;
+        border: 2px solid var(--border);
+        background: var(--panel);
+        color: var(--text);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .difficulty-btn:hover {
+        border-color: #3b5d87;
+      }
+
+      .difficulty-btn.active {
+        border-width: 2px;
+        font-weight: 700;
+      }
+
+      .difficulty-btn[data-level="1"].active { background: rgba(16, 185, 129, 0.2); border-color: #10b981; }
+      .difficulty-btn[data-level="2"].active { background: rgba(59, 130, 246, 0.2); border-color: #3b82f6; }
+      .difficulty-btn[data-level="3"].active { background: rgba(245, 158, 11, 0.2); border-color: #f59e0b; }
+      .difficulty-btn[data-level="4"].active { background: rgba(239, 68, 68, 0.2); border-color: #ef4444; }
+      .difficulty-btn[data-level="5"].active { background: rgba(139, 92, 246, 0.2); border-color: #8b5cf6; }
+
+      .difficulty-info {
+        font-size: 12px;
+        color: var(--muted);
+        padding: 8px 10px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        border-left: 2px solid var(--border);
+      }
+
+      .difficulty-info strong {
+        color: var(--text);
+        display: block;
+        margin-bottom: 2px;
+      }
+
+      .section-label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        margin: 18px 0 10px;
+      }
+
+      .list {
+        display: grid;
+        gap: 10px;
+        max-height: calc(4 * 90px + 3 * 10px);
+        overflow-y: auto;
+        padding-right: 4px;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border) transparent;
+      }
+
+      .list::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      .list::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .list::-webkit-scrollbar-thumb {
+        background-color: var(--border);
+        border-radius: 3px;
+      }
+
+      .game-card {
+        display: grid;
+        gap: 6px;
+        text-align: left;
+        border: 1px solid var(--border);
+        background: rgba(15, 27, 45, 0.9);
+        border-radius: 14px;
+        padding: 12px;
+        cursor: pointer;
+        color: inherit;
+      }
+
+      .game-card:hover,
+      .game-card.active {
+        border-color: var(--accent-2);
+        box-shadow: 0 0 0 1px rgba(122, 227, 255, 0.2) inset;
+      }
+
+      .game-card strong {
+        font-size: 15px;
+      }
+
+      .game-card span,
+      .game-card small {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .main {
+        display: grid;
+        grid-template-rows: auto auto 1fr;
+        min-width: 0;
+      }
+
+      .header {
+        padding: 18px 22px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(7, 17, 31, 0.8);
+        backdrop-filter: blur(14px);
+      }
+
+      .header h2 {
+        margin: 0 0 6px;
+        font-size: 22px;
+      }
+
+      .header p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .result-panel {
+        margin-top: 14px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .result-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        margin: 0 0 8px;
+      }
+
+      .result-badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 7px 12px;
+        font-size: 13px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .result-badge.win {
+        background: rgba(34, 197, 94, 0.16);
+        border-color: rgba(74, 222, 128, 0.56);
+        color: #baf9ce;
+      }
+
+      .result-badge.lose {
+        background: rgba(239, 68, 68, 0.16);
+        border-color: rgba(252, 165, 165, 0.56);
+        color: #ffd1d1;
+      }
+
+      .result-copy {
+        margin: 9px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      .pill {
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .frame-wrap {
+        display: grid;
+        place-items: center;
+        padding: 22px;
+        overflow: auto;
+      }
+
+      iframe {
+        width: 352px;
+        height: 272px;
+        border: 0;
+        border-radius: 18px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.08);
+        background: #000;
+        overflow: hidden;
+      }
+
+      .empty {
+        padding: 22px;
+        text-align: center;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .error {
+        color: var(--danger);
+        white-space: pre-wrap;
+      }
+
+      .footer-note {
+        margin-top: 16px;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 980px) {
+        .shell {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          border-right: 0;
+          border-bottom: 1px solid var(--border);
+        }
+
+        iframe {
+          width: min(100%, 352px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <h1 class="title">🍰 Indie Cake Sandbox</h1>
+        <p class="subtitle">
+          Browse the local community game index, then launch any entry in an
+          iframe.
+        </p>
+
+        <div class="toolbar">
+          <input
+            id="search"
+            type="search"
+            placeholder="Filter games..."
+            aria-label="Filter games"
+          />
+          <select id="sourceMode" aria-label="Choose game source mode">
+            <option value="relative">Relative paths</option>
+            <option value="local">Local file paths</option>
+          </select>
+          <button id="reload">Reload game-index.json</button>
+          <div class="toolbar-actions">
+            <button id="replay" type="button">Replay Current</button>
+            <button id="nextGame" type="button">Next Game</button>
+          </div>
+          <label class="toggle" for="autoplayNext">
+            <input id="autoplayNext" type="checkbox" />
+            Autoplay next game after result
+          </label>
+        </div>
+
+        <div class="difficulty-selector">
+          <label class="section-label" style="margin-top: 0">Difficulty</label>
+          <div class="difficulty-buttons">
+            <button
+              class="difficulty-btn active"
+              data-level="1"
+              title="Casual: Take your time, learn the ropes"
+            >
+              Casual
+            </button>
+            <button
+              class="difficulty-btn"
+              data-level="2"
+              title="Standard: Normal difficulty, balanced challenge"
+            >
+              Std
+            </button>
+            <button
+              class="difficulty-btn"
+              data-level="3"
+              title="Challenging: Less time, more pressure"
+            >
+              Hard
+            </button>
+            <button
+              class="difficulty-btn"
+              data-level="4"
+              title="Expert: Quick reflexes required"
+            >
+              Expert
+            </button>
+            <button
+              class="difficulty-btn"
+              data-level="5"
+              title="Legendary: Master level precision"
+            >
+              Legend
+            </button>
+          </div>
+          <div id="difficultyInfo" class="difficulty-info">
+            <strong>Casual</strong>
+            Take your time, learn the ropes
+          </div>
+        </div>
+
+        <div class="section-label">Games</div>
+        <div id="gameList" class="list"></div>
+
+        <div class="footer-note">
+          Tip: run this folder through a local server, not directly from
+          file://, so the viewer can fetch game-index.json.
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="header">
+          <h2 id="gameTitle">Loading games...</h2>
+          <p id="gameDescription">
+            Fetching the game index and preparing the sandbox.
+          </p>
+          <div id="gameMeta" class="meta"></div>
+          <div class="result-panel">
+            <p class="result-label">Round Result</p>
+            <div id="resultBadge" class="result-badge">Awaiting result</div>
+            <p id="resultDetails" class="result-copy">
+              Launch a game and complete a round to see win/lose status here.
+            </p>
+          </div>
+        </header>
+
+        <section class="frame-wrap">
+          <div id="frameContainer" class="empty">
+            Select a game to load it in the iframe.
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./viewer.js"></script>
+  </body>
+</html>

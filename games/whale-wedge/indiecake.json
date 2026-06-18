@@ -1,0 +1,12 @@
+{
+  "title": "Whale Wedge",
+  "author": "ttbowen",
+  "objective": "Stop the rotating whale wedge in the arrow target zone.",
+  "description": "A one-button timing challenge. Click or tap once to stop the spinning wedge and land Mr. Whale in the hit window.",
+  "tags": ["example", "arcade", "reaction", "timing"],
+  "jam": "one-button",
+  "engineVersion": "0.1.0",
+  "durationSeconds": 6,
+  "controls": "tap, click",
+  "playUrl": "./games/whale-wedge/index.html"
+}

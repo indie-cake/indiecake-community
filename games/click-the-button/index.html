@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Click the Button</title>
+    <style>
+      :root {
+        --frame-width: 320px;
+        --frame-height: 240px;
+      }
+
+      body {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100%;
+        background: linear-gradient(135deg, #3a86ff, #8338ec);
+      }
+      .game-frame {
+        width: var(--frame-width);
+        height: var(--frame-height);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game-frame">
+      <canvas id="gameCanvas" width="320" height="240"></canvas>
+    </main>     
+    <script src="https://cdn.jsdelivr.net/npm/indiecake-engine@0.1.0/dist/indiecake-engine.iife.min.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>

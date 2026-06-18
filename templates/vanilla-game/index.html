@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanilla Microgame Template</title>
+    <style>
+      :root {
+        --frame-width: 320px;
+        --frame-height: 240px;
+      }
+
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background: #111;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+      }
+      .game-frame {
+        width: var(--frame-width);
+        height: var(--frame-height);
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.1;
+      }
+      p {
+        margin: 0;
+      }
+      button {
+        font-size: 18px;
+        padding: 12px 16px;
+      }
+      .muted {
+        opacity: 0.8;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="game-frame">
+      <h1>Click Fast</h1>
+      <p>Click the button before time runs out.</p>
+      <button id="target">Click me</button>
+      <p id="status" class="muted">Time left: 5.0s</p>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/indiecake-engine@latest/dist/indiecake-engine.iife.min.js"></script>
+    <script src="./game.js"></script>
+  </body>
+</html>

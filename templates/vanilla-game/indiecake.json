@@ -1,0 +1,10 @@
+{
+  "title": "Vanilla Microgame Template",
+  "author": "your-name",
+  "objective": "Click the button before time runs out",
+  "description": "A minimal starter template for quick microgames.",
+  "tags": ["template", "vanilla", "reaction"],
+  "durationSeconds": 5,
+  "controls": "mouse or touch",
+  "playUrl": "https://example.com/vanilla-microgame"
+}

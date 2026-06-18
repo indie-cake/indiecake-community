@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Reveal the Star",
+    "repo": "https://github.com/indie-cake/indiecake-community",
+    "url": "./games/reveal-the-star/index.html",
+    "metadata": "./games/reveal-the-star/indiecake.json"
+  },
+  {
+    "title": "Whale Wedge",
+    "repo": "https://github.com/indie-cake/indiecake-community",
+    "url": "./games/whale-wedge/index.html",
+    "metadata": "./games/whale-wedge/indiecake.json"
+  },
+  {
+    "title": "Click the Button",
+    "repo": "https://github.com/indie-cake/indiecake-community",
+    "url": "./games/click-the-button/index.html",
+    "metadata": "./games/click-the-button/indiecake.json"
+  }
+]

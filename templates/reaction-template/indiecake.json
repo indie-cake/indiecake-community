@@ -1,0 +1,10 @@
+{
+  "title": "React Now Template",
+  "author": "your-name",
+  "objective": "Tap quickly when prompted",
+  "description": "A simple reaction-time template for short challenge rounds.",
+  "tags": ["template", "reaction", "timing"],
+  "durationSeconds": 6,
+  "controls": "mouse or touch",
+  "playUrl": "https://example.com/react-now"
+}
